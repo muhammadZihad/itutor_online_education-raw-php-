@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #575757;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*header Area */
+
+.logo {
+    width: 130px;
+}
+
+.login {
+    text-align: right;
+}
+
+.login_a {
+    color: #fff;
+    font-weight: 500;
+    margin-right: 13px;
+    padding: 8px 12px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+.login_a:hover{
+    color:#fff;
+}
+
+.login_btn > i {
+    margin-right: 7px;
+}
+
+.login_btn {
+    position: relative;
+}
+
+.user_menu{
+    font-weight: 500;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    background-color: transparent;
+    
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff;
+}
+.btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff;
+}
+.dropdown-menu{
+    text-align:right;
+    background-color:transparent;
+    border:none;
+    
+}
+.dropdown-menu a{
+    transition:0.5s all;
+    color:#fff;
+    background-color:rgba(7, 7, 7, 0.400);
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+.dropdown-menu a:hover{
+    color:#fff;
+    background-color:rgba(0, 0, 0, 0.500);
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+/*
+.login_btn:after {
+    position: absolute;
+    right: -8px;
+    width: 1px;
+    height: 26px;
+    background: #fff;
+    content: "";
+}
+*/
+
+.header {
+    padding-top: 20px;
+}
+
+.slider_area {
+    background-image: url(../img/slider.jpg);
+    background-size: cover;
+    background-position: left top;
+    padding-bottom: 80px;
+}
+
+.slider_txt h2 {
+    color: #fff;
+    margin-top: 81px;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 78px;
+    font-family: 'Cabin', sans-serif;
+}
+
+.slider_txt h2 > span {
+    color: #FFC722;
+}
+
+.slider_txt p {
+    color: #fff;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
+
+.slider_search input {
+    padding: 10px 14px;
+    width: 100%;
+    border: none;
+}
+
+.search_in {
+    width: 315px;
+    position: relative;
+}
+
+.search_submit {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 49px;
+    height: 44px;
+    background: #FFC722;
+    text-align: center;
+    line-height: 44px;
+    font-size: 18px;
+}
+
+.slider_search {
+    margin-top: 25px;
+}
+
+/* single blog search*/
+
+.slider_search.sin_page {
+    margin-top: 0;
+}
+
+.slider_search.sin_page > .search_in > input {
+    border: 1px solid #e6e6e6;
+}
+
+.slider_search.sin_page > .search_in > .search_submit {
+    line-height: 45px;
+    height: 45px;
+}
+
+/*Subject Semister Area*/
+
+button.sub_btn {
+    background: #FFC722;
+    font-weight: 800;
+    border-radius: 0;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.single_op select {
+    border-radius: 0;
+}
+
+.sem_select_area {
+    margin-top: 52px;
+    margin-bottom: 30px;
+}
+
+/*Recent Uploads Area*/
+
+h2.big_h {
+    font-family: cabin;
+    margin-bottom: 47px;
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 38px;
+}
+
+h2.big_h > span {
+    color: #FFC722;
+}
+
+.prevw {
+    padding: 64px 0;
+    background: url(../img/lock.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.course_txt h5 {
+    font-size: 17px;
+    line-height: 28px;
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+.course_txt p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.course_txt p > i {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.rate {
+    font-size: 13px;
+}
+
+.rate i {
+    color: #248791;
+}
+
+.single_recent_upld {
+    box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.15);
+    padding-bottom: 29px;
+    margin-bottom: 28px;
+}
+
+.course_txt {
+    margin: 0px 19px;
+}
+
+/*Become Instructor Area*/
+
+.become_ins_area {
+    background: #2F2F2F;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    margin-top: 40px;
+}
+
+.become_ins_patt {
+    background: url(../img/ins-bg.png);
+    background-position: center center;
+    background-size: cover;
+}
+
+.become_ins_area h2 {
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 13px;
+}
+
+/*Footer Area*/
+
+.footer_area {
+    background: #248791;
+    color: #fff;
+    padding-top: 32px;
+    padding-bottom: 13px;
+}
+
+.footer_menu1 li {
+    font-weight: 500;
+    line-height: 29px;
+    font-size: 16px;
+}
+
+.about_itutor h5,
+.footer_menu1 h5 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.about_itutor p {
+    font-size: 15px;
+    text-align: justify;
+}
+
+.footer_copyright_area {
+    background: #2F2F2F;
+    color: #fff;
+    padding: 7px 0;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.become_ins_area p {
+    font-size: 18px;
+}
+
+button.get_start_btn {
+    background: #248791;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 9px 16px;
+}
+
+
+/*Selected Category Page Css*/
+
+.sem_select_area.selectd_cat_page {
+    background-color: #2F2F2F;
+    padding: 45px 0;
+    margin-bottom: 0;
+/*
+    background-image: url(../img/ins-bg.png);
+    background-size: cover;
+    background-position: center center;
+*/
+}
+button.btn.sub_btn.slcd_btn {
+    background: #248791;
+    color: #fff;
+}
+
+/*pagination Css*/
+
+.pagination {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.pagination ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li a {
+    border: 1px solid #c9c9c9;
+    color: #242424;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .8s ease 0s;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+    margin-top: 10px;
+}
+
+.pagination li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination li a.active {
+    background-color: #248791;
+    color: white;
+}
+
+.pagination ul{
+    margin: 0 auto;
+}

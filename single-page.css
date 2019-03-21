@@ -1,0 +1,345 @@
+.sin_logo {
+    width: 96px;
+}
+
+.sin_blog-top {
+    margin-bottom: 30px;
+    /* background: #226C79; */
+    padding-bottom: 17px;
+    padding-top: 17px;
+    border-bottom: solid 1px #e0e0e0;
+}
+section.section-padding {
+    margin-bottom: 84px;
+}
+
+
+.full-width-img iframe {
+    width: 100%;
+    height: 472px;
+}
+.cust_txtarea textarea {
+    height: 168px;
+    margin-top: 10px;
+}
+.blog-item{
+	margin-bottom: 30px;
+	box-shadow: 0 49px 72px 0 rgba(25, 25, 25, 0.12);
+}
+.blog-item a{
+	font-family: "Titillium Web",sans-serif;
+}
+.blog-item .blog-thumb{
+	overflow: hidden;
+}
+.blog-item .blog-thumb img{
+	transition: all .3s;
+	width: 100%;
+	height: auto;
+}
+.blog-content{
+	padding: 0px 10px 20px 30px;
+}
+.blog-header .tag{
+	margin-top: 20px;
+	overflow: hidden;
+}
+.entry-title{
+	color: #212121;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 18px;
+	line-height: 25px;
+}
+.entry-title a{
+	color: #212121;
+	transition: all .3s;
+}
+.entry-title a:hover{
+	color: #3452FF;
+}
+.blog-header ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.blog-header ul li{
+	float: left;
+	position: relative;
+	padding-right: 2px;
+	margin-right: 3px;
+}
+.blog-header ul li:last-child:before{
+	content:"";
+}
+.blog-header ul li:before{
+	bottom: 4px;
+	content: ",";
+	position: absolute;
+	right: 0;
+	font-size: 14px;
+}
+.blog-header ul li a{
+	display: block;
+	margin-right: 5px;
+	margin-bottom: 3px;
+	color: #61727f;
+	transition: all .3s;
+}
+.blog-header ul li a:hover{
+	color: #000;
+}
+.entry-content a {
+	color: #000;
+	font-weight: 700;
+	transition: all .3s;
+}
+.entry-content a:hover{
+	color: #3452FF;
+}
+
+/* single blog 
+---------------------------------------*/
+
+.post-wrapper{
+	box-shadow: 0 49px 72px 0 rgba(25, 25, 25, 0.12);
+	padding-bottom: 30px;
+}
+.post-wrapper .blog-content{
+	padding: 15px 20px 15px 40px;
+}
+.single-post-title h2 {
+	font-size: 29px;
+	font-weight: bold;
+	padding-top: 20px;
+	margin-bottom: 10px
+}
+.single-post-title h2 a {
+	color: #212121;
+}
+.post-meta ul {
+	list-style: outside none none;
+	margin: 0;
+	padding: 0;
+}
+.post-meta li {
+	float: left;
+}
+.post-meta {
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.post-meta > ul > li > a {
+	color: #888;
+	margin-right: 19px;
+	transition: all .3s;
+	font-size: 13px;
+}
+.post-meta > ul > li > a:hover{
+	color: #000;
+}
+.post-meta li a i {
+	margin-right: 7px;
+}
+.post-meta li.rating ul {
+	display: inline;
+	float: right;
+}
+.post-meta a {
+	font-family: "Titillium Web",sans-serif;
+}
+li.rating > a {
+	margin-right: 8px !important;
+}
+li.rating > ul a {
+	font-size: 13px;
+	margin: 0;
+}
+li.rating ul i {
+	margin: 1px;
+	color: #FE6000;
+}
+.entry-content p {
+	margin-bottom: 30px;
+}
+.full-width-img {
+	margin-bottom: 30px;
+	margin-left: -40px;
+	margin-right: -20px;
+}
+
+/* single page social icon 
+-------------------------------*/
+.social-link{
+	overflow: hidden;
+}
+.social-link ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.social-link ul li{
+	float: left;
+}
+.social-link ul li a{
+	color: #fff;
+	display: block;
+	font-size: 15px;
+	text-align: center;
+	width: 45px;
+	background: #ddd;
+	white-space: nowrap;
+	margin-right: 6px;
+	padding: 7px 0px;
+	width: 45px;
+	overflow: hidden;
+	font-size: 15px;
+	transition: all 400ms ease 0s;
+	border-radius: 3px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.social-link ul li a.facebook{
+	background: #286196;
+}
+.social-link ul li a.twitter{
+	background: #1AA2F6;
+}
+.social-link ul li a.google{
+	background: #E7462A;
+}
+.social-link ul li a.linkedin{
+	background: #0078B4;
+}
+.social-link ul li a.pinterest{
+	background: #BD081B;
+}
+.social-link ul li a.reddit{
+	background: #FF4400;
+}
+.social-link ul li a.message{
+	background: #9FA3A4;
+}
+.social-link ul li a:hover{
+	width: 90px;
+}
+.social-link ul li i{
+	width: 45px;
+}
+.social-link ul li span{
+	width: 45px;
+	text-align: center;
+	padding-right: 15px;
+}
+
+/* comments form 
+------------------------------*/
+.comments-wrapper{
+	padding: 15px 40px;
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+}
+
+.comment-title h2{
+	margin-bottom: 40px;
+}
+
+/* comments media 
+--------------------------*/
+
+.comments-responsed-wrapper {
+	border-top: 1px solid #ddd;
+	margin-top: 50px;
+	padding: 20px 40px;
+}
+.comments-media ol {
+	border: 1px solid #eaeaea;
+	list-style: outside none none;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+.comments-media ol ul{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.comments-media img {
+	border-radius: 50%;
+	height: 80px;
+	width: 80px;
+}
+.comment-avatar {
+	float: left;
+	margin-right: 15px;
+	padding-top: 15px;
+}
+.comment-section {
+	margin-left: 95px;
+	overflow: hidden;
+}
+.comment-section h2 {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+.comment-section span {
+	color: #aaa;
+	font-size: 13px;
+	margin-left: 20px;
+}
+.comment-content a.btn-comment-replay {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    color: #aaa;
+    padding: 0px 10px;
+    margin-top: 10px;
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    line-height: 1.42857143;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.comment-content a.btn-comment-replay:hover {
+	background: #011a48 none repeat scroll 0 0;
+	border-color: #011a48;
+	color: #fff;
+}
+.comments-media li .comment-inner {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 15px;
+	padding-bottom: 22px;
+	overflow: hidden;
+}
+.comments-media ol ul {
+	margin-left: 60px;
+}
+.comments-media ul li:last-child .comment-inner{
+	border-bottom: none;
+	padding-bottom: 0px;
+}
+.blog-content p {
+    line-height: 30px;
+}
+
+@media (max-width: 768px) {
+	.comments-media ol ul {
+		margin-left:0px;
+	}
+}
+@media (min-width: 992px) {
+	.comments-media ol ul {
+		margin-left: 60px;
+	}
+}
+@media (max-width: 480px) {
+	.comment-avatar {
+	    float: none;
+	    margin-right: 0;
+	}
+	.comment-section {
+	    margin-left: 0;
+	}
+}
