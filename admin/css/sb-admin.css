@@ -222,3 +222,29 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+.post_wrapper{
+    padding-left:20px;
+    width:60%;
+    min-width: 500px;
+}
+.post_wrapper label{
+    font-size:1.6em;
+}
+.title{
+    font-size:18px;
+    height:40px;
+}
+.cats{
+    width: 60%;
+    display:flex;
+}
+.cat{
+    width:20%;
+    display:block;
+    float:left;
+    margin:0px 5px 15px 0px;;
+}
+.cat label{
+    font-size:1.2em;
+}
