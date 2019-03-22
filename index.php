@@ -9,6 +9,10 @@ include "mysql.php";
         $user = mysqli_fetch_assoc($rr);
         $u_name = $user['name'];
         $_SESSION['id']=$u_id;
+        $_SESSION['name']=$u_name;
+        $admin_query = mysqli_query($conn,"select instructor_status from users where id=$u_id");
+        $ad_check =mysqli_fetch_assoc($admin_query); 
+        $is_ins = $ad_check['instructor_status'];
     }
 ?>
 <!doctype html>
@@ -57,6 +61,7 @@ include "mysql.php";
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Profile</a>
+                    <?php if($is_ins){ ?> <a class="dropdown-item" href="admin/index.php">Admin</a> <?php } ?>
                                 <a class="dropdown-item" href="logout.php">Logout</a>
                             </div>
                         </div>
@@ -151,7 +156,7 @@ include "mysql.php";
                 <div class="single_recent_upld">
                     <div class="prevw"></div>
                     <div class="course_txt">
-                        <h5><a href="single.php?post_id=<?php echo $s_post['post_id'];?>"><?php  echo $s_post['title']; ?></a></h5>
+                        <h5><a href="single.php?post_id=<?php echo $s_post['post_id'];?>"><?php  echo excerpt($s_post['title']) ; ?></a></h5>
                         <p><i class="fas fa-user"></i><?php  
                             $sub_query = 'select name from users where id='.$s_post['ins_id'].'';
                             $sub_res = mysqli_fetch_assoc(mysqli_query($conn,$sub_query));
@@ -240,3 +245,18 @@ include "mysql.php";
 </body>
 
 </html>
+<?php 
+    function excerpt($title) {
+        $cutOffLength=30;
+        $charAtPosition = "";
+        $titleLength = strlen($title);
+    
+        do {
+            $cutOffLength++;
+            $charAtPosition = substr($title, $cutOffLength, 1);
+        } while ($cutOffLength < $titleLength && $charAtPosition != " ");
+    
+        return substr($title, 0, $cutOffLength) . '...';
+    
+    }
+?>

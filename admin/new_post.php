@@ -1,6 +1,6 @@
 <?php  
 $page_title = "Add new post";
-include 'mysql.php';
+include '../mysql.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,15 +35,20 @@ include 'mysql.php';
 
 <?php include 'header.php'; 
 $page_title = "Add post";
+    if(isset($_POST['submit'])){
+        $title = $_POST['title'];
+        $level = $_POST['level'];
+        $term = $_POST['term'];
+        $subject = $_POST['subject'];
+        $content = $_POST['content'];
+        $catagory= $level.$term.$subject;
+        $date = date('Y-m-d H:i:s');
+        $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content) VALUES ('$title','$catagory',$u_id,'$date','$content')";
 
-$title = $_POST['title'];
-$level = $_POST['level'];
-$term = $_POST['term'];
-$subject = $_POST['subject'];
-$content = $_POST['content'];
+        $rr = mysqli_query($conn,$insert_query);
 
-$catagory= $level.$term.$subject ;
 
+    }
 
 
 
@@ -68,7 +73,7 @@ $catagory= $level.$term.$subject ;
             </div>
             <!-- /.container-fluid -->
             <div class="post_wrapper">
-                <form action="new_post.php" method="get">
+                <form action="new_post.php" method="post">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control title" class="title"  placeholder="Enter Title">
@@ -110,7 +115,7 @@ $catagory= $level.$term.$subject ;
                         <label for="content">Content</label>
                         <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Submit Post</button>
+                    <button name = "submit" type="submit" class="btn btn-primary mb-2">Submit Post</button>
                     
                 </form>
             </ >

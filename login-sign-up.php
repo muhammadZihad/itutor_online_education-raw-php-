@@ -31,6 +31,9 @@
 		$password=md5($password);
 		$qur = "select * from users where email='$email'";
 		$res=mysqli_query($conn,$qur);
+		if(mysqli_num_rows($res)<1){
+			die('Email not registered');
+		}
 		while($data=mysqli_fetch_assoc($res)){
 			if($password==$data['password']){
 
@@ -46,7 +49,10 @@
 			}
 		}
 		if($ispasswrong){
-			invalid_data();
+			echo '<script type="text/javascript">',
+				' document.getElementById("warning").style.display = "block";',
+				'</script>'
+		   ;
 		}
 	}
 
@@ -94,7 +100,7 @@
 			<h1>Sign in</h1>
 			<span></span>
 			
-			<div style="font-size:11px;display:none;" id="warning"class=" alert alert-danger" role="alert">
+			<div style="font-size:11px;display:block;" id="warning"class=" alert alert-danger" role="alert">
   					Wrong username or password.
 			</div>
 			<input name="email" type="email" placeholder="Email" />
@@ -126,16 +132,6 @@
 </body>
 
 <script src="js/custom.js"></script>
-<script>
-			<?php function invalid_data(){
-				//<script>var x = document.getElementById('warning');x.style.display = 'block';</script> ";
-				echo "<script>
-				alert('hello'); // Javascript
-				</script>";
-				
 
-			}
-			?>
-			</script>
 </html>
 

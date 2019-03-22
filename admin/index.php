@@ -1,3 +1,10 @@
+
+<?php 
+
+    $page_title = 'Dashboard';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +36,10 @@
 
 </head>
 
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+$u_id=$_SESSION['id'];
+$u_name=$_SESSION['name'];
+?>
 
         <div id="page-wrapper">
 

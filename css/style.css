@@ -240,6 +240,7 @@ h2.big_h > span {
     box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.15);
     padding-bottom: 29px;
     margin-bottom: 28px;
+    height:290px;
 }
 
 .course_txt {
