@@ -2,6 +2,9 @@
 <?php 
 
     $page_title = 'Dashboard';
+    if(!isset($_COOKIE['itutor_user'])){
+        header("Location:../index.php");
+    }
 ?>
 
 
@@ -37,8 +40,16 @@
 </head>
 
 <?php include 'header.php'; 
+include '../mysql.php';
 $u_id=$_SESSION['id'];
 $u_name=$_SESSION['name'];
+
+
+$query = "select * from post_init where ins_id=$u_id" ;
+$result = mysqli_query($conn , $query);
+
+
+
 ?>
 
         <div id="page-wrapper">
@@ -49,24 +60,45 @@ $u_name=$_SESSION['name'];
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Blank Page
-                            <small>Subheading</small>
+                            Dashboard
+                            <small><?php echo $u_name ;?></small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                        
                     </div>
                 </div>
                 <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col-2">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
 
+                    </tr>
+                </thead>
+                <tbody>
+                <?php   $serial = 1; while ($pst = mysqli_fetch_assoc($result)) {        ?>
+                    <tr>
+                    <th scope="row"><?php echo $serial; ?> </th>
+                    <td><?php echo $pst['title'] ; ?></td>
+                    <td><?php echo $pst['post_date'] ; ?></td>
+                    <td><?php echo $pst['rating'] ; ?></td>
+                    <td><?php echo $pst['num_rating'] ; ?></td>
+                    <td><a class="text-info" href="#">Edit</a></td>
+                    <td><a class="text-danger" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+
+                <?php $serial++;} ?>
+                </tbody>
+            </table>
         </div>
         <!-- /#page-wrapper -->
 

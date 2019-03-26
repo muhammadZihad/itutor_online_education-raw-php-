@@ -24,6 +24,9 @@ include '../mysql.php';
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -44,15 +47,8 @@ $page_title = "Add post";
         $catagory= $level.$term.$subject;
         $date = date('Y-m-d H:i:s');
         $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content) VALUES ('$title','$catagory',$u_id,'$date','$content')";
-
         $rr = mysqli_query($conn,$insert_query);
-
-
     }
-
-
-
-
 ?>
 
         <div id="page-wrapper">
@@ -113,7 +109,7 @@ $page_title = "Add post";
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea name="content" id="body" class="form-control" rows="6"></textarea>
                     </div>
                     <button name = "submit" type="submit" class="btn btn-primary mb-2">Submit Post</button>
                     
@@ -127,10 +123,14 @@ $page_title = "Add post";
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="js/scripts.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
 </body>
+
 
 </html>

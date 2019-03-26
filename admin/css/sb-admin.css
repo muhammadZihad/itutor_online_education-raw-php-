@@ -248,3 +248,7 @@ ul.alert-dropdown {
 .cat label{
     font-size:1.2em;
 }
+
+td{
+    max-width:150px;
+}
