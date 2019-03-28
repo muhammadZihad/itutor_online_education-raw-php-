@@ -1,0 +1,3 @@
+Import this sql file to your server.
+User name='root'
+password=''
