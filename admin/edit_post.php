@@ -34,17 +34,26 @@ include '../mysql.php';
 </head>
 
 <?php include 'header.php'; 
-$page_title = "Add post";
+if(isset($_GET['post_id'])){
+    $_SESSION['post_id']=$_GET['post_id'];
+}
+$post_id=$_SESSION['post_id'];
+$get_qry = "SELECT *  FROM post_init WHERE post_id = $post_id";
+$post = mysqli_query($conn,$get_qry);
+
+$data = mysqli_fetch_assoc($post);
+
+
+$page_title = "Edit post";
     if(isset($_POST['submit'])){
         $title = $_POST['title'];
         $level = $_POST['level'];
         $term = $_POST['term'];
         $subject = $_POST['subject'];
-        $content = $_POST['content'];
+        $content =mysqli_real_escape_string($conn, $_POST['content']);
         $catagory= $level.$term.$subject;
-        $date = date('Y-m-d H:i:s');
-        $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content) VALUES ('$title','$catagory',$u_id,'$date','$content')";
-        $rr = mysqli_query($conn,$insert_query);
+        $update_query = "UPDATE post_init SET title='$title' , catagory='$catagory', content='$content' WHERE post_id=$post_id";
+        $rr = mysqli_query($conn,$update_query);
     }
 ?>
 
@@ -66,10 +75,10 @@ $page_title = "Add post";
 </div>
 <!-- /.container-fluid -->
 <div class="post_wrapper">
-    <form action="new_post.php" method="post">
+    <form action="edit_post.php" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" name="title" class="form-control title" class="title"  placeholder="Enter Title">
+            <input type="text" name="title" class="form-control title" class="title" value="<?php echo $data['title']; ?>">
         </div>
         <div class="cats">
             <div class="form-group cat">
@@ -107,7 +116,7 @@ $page_title = "Add post";
         </div>
         <div class="form-group">
             <label for="content">Content</label>
-            <textarea name="content" class="form-control" rows="6"></textarea>
+            <textarea name="content" id="body" class="form-control" ><?php echo $data['content']; ?></textarea>
         </div>
         <button name = "submit" type="submit" class="btn btn-primary mb-2">Submit Post</button>
         
@@ -120,6 +129,8 @@ $page_title = "Add post";
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+<script src="js/scripts.js"></script>
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -128,3 +139,4 @@ $page_title = "Add post";
 </body>
 
 </html>
+<?php //echo htmlspecialchars($data['content']) ; ?>

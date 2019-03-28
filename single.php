@@ -173,6 +173,11 @@
                         </div>
                         <!-- /.end comments wrapper -->
 
+
+    
+        
+        
+
                         <div class="comments-responsed-wrapper">
                             <div class="single-post-title comment-title">
                                 <h2>Commets (<?php echo $posts['count_com'] ; ?>)</h2>
@@ -180,6 +185,16 @@
                             <!-- post comments -->
                             <div class="comments-media">
                                 <!-- 1st comment -->
+                    <?php 
+                    // Main comment starts here
+                        $c_query = "select * from comments where post_id=$post_id";
+                        $comment_result = mysqli_query($conn,$c_query);
+                        if(mysqli_num_rows($comment_result) > 0){
+                            
+                            while($comment = mysqli_fetch_assoc($comment_result)){      
+                                $c_id =  $comment['c_id'];   
+                                ?>
+
                                 <ol>
                                     <li>
                                         <div class="comment-inner">
@@ -188,16 +203,20 @@
                                             </div>
                                             <div class="comment-section">
                                                 <header>
-                                                    <h2>Josef Milton</h2>
+                                                    <h2><?php $name=data_fetch($comment['user_id']);echo $name;   ?></h2>
                                                     <span> 15 minutes ago </span>
                                                 </header>
                                                 <div class="comment-content">
-                                                    <p>The challenge is to ensure that when a client visits your website they feel positive about your company. </p>
+                                                    <p><?php echo $comment['comment']  ?></p>
                                                     <a href="#" class="btn-comment-replay">Replay</a>
                                                 </div>
                                             </div>
                                         </div>
-
+                                    <?php   
+                                    // Sub comments start here
+                                    $s_qry = "select * from sub_comment where c_id=$c_id";
+                                    $s_comments = mysqli_query($conn,$s_qry);
+                                    while($s_comment = mysqli_fetch_assoc($s_comments)){      ?>
                                         <ul>
                                             <li>
                                                 <div class="comment-inner">
@@ -206,76 +225,37 @@
                                                     </div>
                                                     <div class="comment-section">
                                                         <header>
-                                                            <h2>Jonathon Bin</h2>
+                                                            <h2><?php $name=data_fetch($s_comment['u_id']);echo $name;   ?></h2>
                                                             <span> 10 minutes ago </span>
                                                         </header>
                                                         <div class="comment-content">
-                                                            <p>The challenge is to ensure that when a client visits your website they feel positive about your company. </p>
-                                                            <a href="#" class="btn-comment-replay">Replay</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="comment-inner">
-                                                    <div class="comment-avatar">
-                                                        <img src="img/1.jpg" alt="" />
-                                                    </div>
-                                                    <div class="comment-section">
-                                                        <header>
-                                                            <h2>Josef Milton</h2>
-                                                            <span> 5 minutes ago </span>
-                                                        </header>
-                                                        <div class="comment-content">
-                                                            <p>The challenge is to ensure that when a client visits your website they feel positive about your company. </p>
+                                                            <p><?php echo $s_comment['comment']  ?></p>
                                                             <a href="#" class="btn-comment-replay">Replay</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
-                                    </li>
-                                </ol>
-                                <!-- 2nd comment -->
-                                <ol>
-                                    <li>
-                                        <div class="comment-inner">
-                                            <div class="comment-avatar">
-                                                <img src="img/3.jpg" alt="" />
-                                            </div>
-                                            <div class="comment-section">
-                                                <header>
-                                                    <h2>Tomas Udoya</h2>
-                                                    <span> 20 minutes ago </span>
-                                                </header>
-                                                <div class="comment-content">
-                                                    <p>The challenge is to ensure that when a client visits your website they feel positive about your company. </p>
-                                                    <a href="#" class="btn-comment-replay">Replay</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php
 
-                                        <ul>
-                                            <li>
-                                                <div class="comment-inner">
-                                                    <div class="comment-avatar">
-                                                        <img src="img/2.jpg" alt="" />
-                                                    </div>
-                                                    <div class="comment-section">
-                                                        <header>
-                                                            <h2>Josef Milton</h2>
-                                                            <span> 15 minutes ago </span>
-                                                        </header>
-                                                        <div class="comment-content">
-                                                            <p>The challenge is to ensure that when a client visits your website they feel positive about your company. </p>
-                                                            <a href="#" class="btn-comment-replay">Replay</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    }
+                                    ?>
+                                        
                                     </li>
                                 </ol>
+
+
+                                <?php 
+                            }
+
+
+                        }
+                    
+                        ?>
+
+
+                                
+        
 
                             </div>
                         </div>
@@ -334,3 +314,14 @@
 </body>
 
 </html>
+
+<?php  
+function data_fetch($id){
+    global $conn;
+    $n_qry = "select name from users where id=$id";
+    $n_result = mysqli_fetch_assoc(mysqli_query( $conn,$n_qry));
+    return $n_result['name'];
+}
+
+
+?>

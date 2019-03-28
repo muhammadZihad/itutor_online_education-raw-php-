@@ -91,7 +91,7 @@ $result = mysqli_query($conn , $query);
                     <td><?php echo $pst['post_date'] ; ?></td>
                     <td><?php echo $pst['rating'] ; ?></td>
                     <td><?php echo $pst['num_rating'] ; ?></td>
-                    <td><a class="text-info" href="#">Edit</a></td>
+                    <td><a class="text-info" href="edit_post.php?post_id=<?php echo $pst['post_id'];?>">Edit</a></td>
                     <td><a class="text-danger" href="#">Delete</a></td>
                     </tr>
                     <tr>

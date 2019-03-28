@@ -132,7 +132,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -142,9 +142,6 @@
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="new_post.php">Add Post</a>
-                            </li>
-                            <li>
-                                <a href="edit_post.php">Edit Post</a>
                             </li>
                         </ul>
                     </li>
