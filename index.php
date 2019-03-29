@@ -33,6 +33,7 @@ include "mysql.php";
     <link rel="stylesheet" href="css/style.css">
 
     <title>Hello, world!</title>
+        
 </head>
 
 <body>

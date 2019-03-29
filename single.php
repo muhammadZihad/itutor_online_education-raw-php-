@@ -55,7 +55,7 @@
                         <!-- post thumbnail -->
                         <div class="single-thumb">
                             <a href="">
-									<img src="img/sing-bl.jpg" alt="" />
+									<img src="<?php echo $posts['image_name'] ; ?>" style="max-width:1120px;max-height:500px;" alt="" />
 								</a>
                         </div>
 

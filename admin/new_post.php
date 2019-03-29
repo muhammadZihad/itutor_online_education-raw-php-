@@ -34,6 +34,8 @@ include '../mysql.php';
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    
+
 </head>
 
 <?php include 'header.php'; 
@@ -46,8 +48,30 @@ $page_title = "Add post";
         $content =mysqli_real_escape_string($conn, $_POST['content']);
         $catagory= $level.$term.$subject;
         $date = date('Y-m-d H:i:s');
-        $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content) VALUES ('$title','$catagory',$u_id,'$date','$content')";
+        $img_name = 'default_post.jpg';
+
+        // dealing with feature image
+        $file=$_FILES['file'];
+        $file_name = $file['name'];
+        $file_tmp_name = $file['tmp_name'];
+        $file_size = $file['size'];
+        $file_error = $file['error'];
+        $file_type = $file['type'];
+        
+        $file_ext = explode('.',$file_name);
+        $file_actual_ext = strtolower(end($file_ext));
+
+        if($file_error===0){
+            $file_new_name = $file_ext[0].uniqid('',true).".".$file_actual_ext ;
+            $file_destination = 'img/post_image/'.$file_new_name ;
+            move_uploaded_file($file_tmp_name,$file_destination);
+        }else{
+            echo "<script>alert('Error occured while uploading image');</script>";
+        }
+
+        $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content,image_name) VALUES ('$title','$catagory',$u_id,'$date','$content','$file_destination')";
         $rr = mysqli_query($conn,$insert_query);
+        mysqli_close($conn);
     }
 ?>
 
@@ -69,7 +93,7 @@ $page_title = "Add post";
             </div>
             <!-- /.container-fluid -->
             <div class="post_wrapper">
-                <form action="new_post.php" method="post">
+                <form action="new_post.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control title" class="title"  placeholder="Enter Title">
@@ -104,8 +128,8 @@ $page_title = "Add post";
                     </div>
 
                     <div class="form-group">
-                        <label for="img-file">Select featured image</label>
-                        <input type="file" name="img-file" class="form-control-file" id="exampleFormControlFile1">
+                        <label for="file">Select featured image</label>
+                        <input type="file" name="file" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>

@@ -1,6 +1,9 @@
 
 <?php 
     session_start();
+    if(!isset($_SESSION['id'])){
+        header("Location: ../index.php");
+    }
     $u_id=$_SESSION['id'];
     $u_name=$_SESSION['name'];
 ?>
