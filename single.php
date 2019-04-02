@@ -17,7 +17,7 @@
     }
     if (isset($_POST['sub_comment_submit'])){
         if(!isset($_COOKIE['itutor_user'])){
-            echo "<script>alert('You have to log in to comment')</script>"; // work starts from here
+            echo "<script>alert('You have to log in to comment')</script>"; // work starts from here ; sub comment is not properly donw
             header("Location:single.php?post_id=$post_id");
         }
         else{
