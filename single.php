@@ -2,6 +2,33 @@
     session_start();
     include "mysql.php";
     $post_id=$_GET['post_id'];
+    if (isset($_POST['comment_submit'])){
+        if(!isset($_COOKIE['itutor_user'])){
+            echo "<script>alert('You have to log in to comment')</script>";
+            header("Location:single.php?post_id=$post_id");
+        }
+        else{
+            $u_id = $_COOKIE['itutor_user'];
+            $comment = mysqli_real_escape_string($conn,$_POST['comment']);
+            $query = "INSERT INTO comments (post_id,user_id,comment,date) values ($post_id,$u_id,'$comment',now())" ;
+            mysqli_query($conn,$query);
+            
+        }
+    }
+    if (isset($_POST['sub_comment_submit'])){
+        if(!isset($_COOKIE['itutor_user'])){
+            echo "<script>alert('You have to log in to comment')</script>"; // work starts from here
+            header("Location:single.php?post_id=$post_id");
+        }
+        else{
+            $u_id = $_COOKIE['itutor_user'];
+            $sub_comment = mysqli_real_escape_string($conn,$_POST['comment']);
+            $query = "INSERT INTO sub_comment (c_id,u_id,comment,date) values ($post_id,$u_id,'$comment',now())" ;
+            mysqli_query($conn,$query);
+        }
+    }
+    $query = "update post_init set count_com = (select count(c_id) where post_id = $post_id) where post_id = $post_id";
+    mysqli_query($conn,$query);
     $query = "select * from post_init where post_id=$post_id";
     $posts = mysqli_fetch_assoc(mysqli_query($conn,$query));
 ?>
@@ -83,7 +110,7 @@
                                         <li>
                                             <a href="#">
 													<i class="fa fa-tag"></i>
-													 Marketing, Sales 
+													<?php echo $posts['catagory'] ; ?>
 												</a>
                                         </li>
                                         <li>
@@ -125,58 +152,9 @@
                             </div>
                             <!-- /.end single blog entry content -->
 
-
-
-
                         </div>
                         <!-- /.end single blog content -->
-
-                        <!-- start comments wrapper -->
-                        <div class="comments-wrapper">
-                            <div class="single-post-title comment-title">
-                                <h2>write your comment</h2>
-                            </div>
-
-
-                            <form class="contact-form" id="contactForm" name="contact-form" action="sendemail.php" method="POST">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="name">Name</label>
-                                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="email">Email</label>
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="Your Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="subject">Subject</label>
-                                            <input type="text" name="subject" class="form-control" id="subject" placeholder="Your Subject">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group cust_txtarea">
-                                    <label class="sr-only" for="message">Message</label>
-                                    <textarea name="message" class="form-control" id="message" placeholder="Your Message"></textarea>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" name="submit" class="btn btn-primary input-btn"><span>Submit</span></button>
-                                </div>
-                            </form>
-
-
-                        </div>
-                        <!-- /.end comments wrapper -->
-
-
-    
-        
-        
+                              
 
                         <div class="comments-responsed-wrapper">
                             <div class="single-post-title comment-title">
@@ -187,7 +165,7 @@
                                 <!-- 1st comment -->
                     <?php 
                     // Main comment starts here
-                        $c_query = "select * from comments where post_id=$post_id";
+                        $c_query = "select * from comments where post_id=$post_id order by date desc";
                         $comment_result = mysqli_query($conn,$c_query);
                         if(mysqli_num_rows($comment_result) > 0){
                             
@@ -204,7 +182,7 @@
                                             <div class="comment-section">
                                                 <header>
                                                     <h2><?php $name=data_fetch($comment['user_id']);echo $name;   ?></h2>
-                                                    <span> 15 minutes ago </span>
+                                                    <span><?php echo $comment['date'];?> </span>
                                                 </header>
                                                 <div class="comment-content">
                                                     <p><?php echo $comment['comment']  ?></p>
@@ -226,7 +204,7 @@
                                                     <div class="comment-section">
                                                         <header>
                                                             <h2><?php $name=data_fetch($s_comment['u_id']);echo $name;   ?></h2>
-                                                            <span> 10 minutes ago </span>
+                                                            <span><?php echo $s_comment['date'];?> </span>
                                                         </header>
                                                         <div class="comment-content">
                                                             <p><?php echo $s_comment['comment']  ?></p>
@@ -240,7 +218,22 @@
 
                                     }
                                     ?>
-                                        
+                                        <div class="comments-wrapper sub_comment">
+                                            <div class="single-post-title comment-title">
+                                                <h2>write your comment</h2>
+                                            </div>
+
+                                            <form class="contact-form" id="contactForm" name="contact-form" action='<?php echo "single.php?post_id=$post_id&cid=$c_id";?>' method="POST">
+
+                                                <div class="form-group cust_txtarea">
+                                                    <label class="sr-only" for="comment">Comment</label>
+                                                    <textarea name="sub_comment" class="form-control" id="message" placeholder="Your Comment" ></textarea>
+                                                </div>
+                                                <div class="text-right">
+                                                    <button type="submit" name="sub_comment_submit" class="btn btn-primary input-btn"><span>Submit</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </li>
                                 </ol>
 
@@ -259,6 +252,24 @@
 
                             </div>
                         </div>
+                        <!-- start comments wrapper -->
+                        <div class="comments-wrapper">
+                            <div class="single-post-title comment-title">
+                                <h2>write your comment</h2>
+                            </div>
+
+                            <form class="contact-form" id="contactForm" name="contact-form" action='<?php echo "single.php?post_id=$post_id";?>' method="POST">
+
+                                <div class="form-group cust_txtarea">
+                                    <label class="sr-only" for="comment">Comment</label>
+                                    <textarea name="comment" class="form-control" id="message" placeholder="Your Comment" ></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" name="comment_submit" class="btn btn-primary input-btn"><span>Submit</span></button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.end comments wrapper --> 
                     </div>
                 </div>
             </div>
@@ -322,6 +333,5 @@ function data_fetch($id){
     $n_result = mysqli_fetch_assoc(mysqli_query( $conn,$n_qry));
     return $n_result['name'];
 }
-
 
 ?>
