@@ -14,8 +14,9 @@ include "mysql.php";
         $ad_check =mysqli_fetch_assoc($admin_query); 
         $is_ins = $ad_check['instructor_status'];
     }
+
 ?>
-<!doctype html>
+
 <html lang="en">
 
 <head>
@@ -89,7 +90,7 @@ include "mysql.php";
             </div>
         </div>
     </div>
-
+    
 
     <!--   Semister Subject Input Area-->
     <div class="sem_select_area">
@@ -260,4 +261,13 @@ include "mysql.php";
         return substr($title, 0, $cutOffLength) . '...';
     
     }
+
+    function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+            $string
+        );
+    }
 ?>
+

@@ -75,22 +75,23 @@ $result = mysqli_query($conn , $query);
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col-2">Image</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-
+                    <th style="width: 11%" scope="col">Date</th>
+                    <th style="width: 8%"scope="col">Comments</th>
+                    <th style="width: 8%" scope="col">Rating</th>
+                    <th style="width: 18%" scope="col-2">Image</th>
+                    <th style="width: 8%" scope="col">Edit</th>
+                    <th style="width: 8%" scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php   $serial = 1; while ($pst = mysqli_fetch_assoc($result)) {        ?>
                     <tr>
                     <th scope="row"><?php echo $serial; ?> </th>
-                    <td><?php echo $pst['title'] ; ?></td>
+                    <td><a href="../single.php?post_id=<?php echo $pst['post_id'];?>" target="_blank"><?php echo $pst['title'] ; ?></a> </td>
                     <td><?php echo $pst['post_date'] ; ?></td>
+                    <td><?php echo $pst['count_com'] ; ?></td>
                     <td><?php echo $pst['rating'] ; ?></td>
-                    <td><?php echo $pst['num_rating'] ; ?></td>
+                    <td><img src="<?php echo '../'.$pst['image_name'] ; ?>" style="width:100%;height:100%;" alt="" /></td>
                     <td><a class="text-info" href="edit_post.php?post_id=<?php echo $pst['post_id'];?>">Edit</a></td>
                     <td><a class="text-danger" href="#">Delete</a></td>
                     </tr>

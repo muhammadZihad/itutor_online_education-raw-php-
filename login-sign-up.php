@@ -23,9 +23,8 @@
 			}
 		}
 	}
-
+	$ispasswrong=0;
 	if(isset($_POST['sign_in'])){
-		$ispasswrong=0;
 		$email = mysqli_real_escape_string($conn,$_POST['email']) ;
 		$password = mysqli_real_escape_string($conn,$_POST['password']) ;
 		$password=md5($password);
@@ -47,12 +46,6 @@
 			else{
 				$ispasswrong=1;
 			}
-		}
-		if($ispasswrong){
-			echo '<script type="text/javascript">',
-				' document.getElementById("warning").style.display = "block";',
-				'</script>'
-		   ;
 		}
 	}
 
@@ -83,9 +76,9 @@
 			<h1>Create Account</h1>
 			<span></span>
 			<?php function completed(){
-				?>
-				<p class="text-success">Registration successfull. Please login to continue.</p>
-				<?php
+				echo '<div class="alert alert-primary" role="alert">
+				Registration Successful. Please Log in to continue.
+			  </div>';
 			}
 			?>
 			<input type="text" name="name" placeholder="Name" />
@@ -99,10 +92,13 @@
 		<form action="login-sign-up.php" method="post" class="sign_form1">
 			<h1>Sign in</h1>
 			<span></span>
-			
-			<div style="font-size:11px;display:block;" id="warning"class=" alert alert-danger" role="alert">
-  					Wrong username or password.
-			</div>
+			<?php
+				if($ispasswrong){
+					echo '<div class="alert alert-danger" role="alert">
+						Invalid username or password.
+				  </div>';
+				}
+			?>
 			<input name="email" type="email" placeholder="Email" />
 			<input name="password" type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>

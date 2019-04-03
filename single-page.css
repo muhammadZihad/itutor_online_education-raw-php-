@@ -241,7 +241,10 @@ li.rating ul i {
 }
 
 .comment-title h2{
-	margin-bottom: 40px;
+	margin-bottom: 30px;
+}
+.comment-title h6{
+	margin-bottom: 20px;
 }
 
 /* comments media 
