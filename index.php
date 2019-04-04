@@ -14,7 +14,7 @@ include "mysql.php";
         $ad_check =mysqli_fetch_assoc($admin_query); 
         $is_ins = $ad_check['instructor_status'];
     }
-
+    
 ?>
 
 <html lang="en">
@@ -161,7 +161,7 @@ include "mysql.php";
                         <h5><a href="single.php?post_id=<?php echo $s_post['post_id'];?>"><?php  echo excerpt($s_post['title']) ; ?></a></h5>
                         <p><i class="fas fa-user"></i><?php  
                             $sub_query = 'select name from users where id='.$s_post['ins_id'].'';
-                            $sub_res = mysqli_fetch_assoc(mysqli_query($conn,$sub_query));
+                            $sub_res = mysqli_fetch_assoc(mysqli_query($conn,$sub_query)) ;
                             echo $sub_res['name'];
                         ?></p>
                         <div class="rate">

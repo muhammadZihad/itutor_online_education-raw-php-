@@ -21,47 +21,10 @@
     mysqli_query($conn,$query);
     $query = "select * from post_init where post_id=$post_id";
     $posts = mysqli_fetch_assoc(mysqli_query($conn,$query));
+
+
+    include 'header.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css" integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,600i,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="single-page.css">
-    <title>Single Post</title>
-</head>
-
-<body>
-    <div class="sin_blog-top">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="sin_logo">
-                        <a href="index.php" style=' border:none; color:none'><img src="img/logo-black.png" alt=""> </a>
-                        
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="slider_search sin_page float-right">
-                        <div class="search_in">
-                            <input type="search" placeholder="What do you want to learn?">
-                            <div class="search_submit">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ::::::::::::::::::::: single-blog section:::::::::::::::::::::::::: -->
     <section class="section-padding">
@@ -116,11 +79,11 @@
 													<?php echo $posts['count_com'] ; ?> Comments
 												</a>
                                         </li>
-                                        <li class="rating">
+                                        <li class="rating"  data-toggle="modal" data-target="#exampleModalCenter">
                                             <a href="#">
 													Rating
 													<ul> 
-														<li><a href="#"><?php echo $posts['rating'] ; ?></a></li>
+														<li><a href=""><?php echo $posts['rating'] ; ?></a></li>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     </ul>
                                     </a>
@@ -129,6 +92,35 @@
                                 </div>
                             </header>
                             <!-- /.end single blog header -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Rate this post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form class="range-field">
+      <input class='slider orange' type="range"  max="5"/>
+      Drag the slider to give rating.
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
                             <!-- start single blog entry content -->
                             <div class="entry-content">
@@ -171,11 +163,11 @@
                                     <li>
                                         <div class="comment-inner">
                                             <div class="comment-avatar">
-                                                <img src="img/1.jpg" alt="" />
+                                                <img src="<?php $data=data_fetch($comment['user_id']);echo $data['image'];?>" alt="No Img" />
                                             </div>
                                             <div class="comment-section">
                                                 <header>
-                                                    <h2><?php $name=data_fetch($comment['user_id']);echo $name;   ?></h2>
+                                                    <h2><?php echo $data['name'] ?></h2>
                                                     <span><?php echo $comment['date'];?> </span>
                                                 </header>
                                                 <div class="comment-content">
@@ -221,61 +213,16 @@
     </section>
     <!-- ./end single-blog section -->
 
-    <!--  Footer Area-->
-    <div class="footer_area">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="about_itutor">
-                        <h5>About Itutor</h5>
-                        <p>itutor is a free resource site for Students. Students can learn their subject from online. If you have skill you can also be an instructor here. The main goal of this site is to provide quality tutorial for students</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="footer_menu1">
-                        <h5>Links</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#!">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#!">About Us</a>
-                            </li>
-                            <li>
-                                <a href="#!">Privacy Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer_copyright_area">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="footer_copyright_txt">&copy; Saleheen & Zihad</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Of Footer Area-->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
 
-</html>
+<?php
+    include 'footer.php';
 
-<?php  
 function data_fetch($id){
     global $conn;
-    $n_qry = "select name from users where id=$id";
+    $n_qry = "select name,image from users where id=$id";
     $n_result = mysqli_fetch_assoc(mysqli_query( $conn,$n_qry));
-    return $n_result['name'];
+    return $n_result;
 }
 
 ?>

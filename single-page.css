@@ -268,8 +268,9 @@ li.rating ul i {
 }
 .comments-media img {
 	border-radius: 50%;
-	height: 80px;
-	width: 80px;
+	height: 100px;
+	width: 100px;
+	margin-top:0px;
 }
 .comment-avatar {
 	float: left;
@@ -344,5 +345,92 @@ li.rating ul i {
 	}
 	.comment-section {
 	    margin-left: 0;
+	}
+}
+.slider {
+	-webkit-appearance: none; 
+	width: 160px; 
+	height: 20px; 
+	margin: 10px 10px; 
+	background: linear-gradient(to right, #16a085 0%, #16a085 100%); 
+	background-size: 150px 10px; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	overflow: hidden; 
+	outline: none; 
+	zoom: 130%; 
+	display: block; 
+	margin: auto; 
+	margin-bottom: 30px; 
+  }
+  
+  .slider::-webkit-slider-thumb {
+	-webkit-appearance: none; 
+	width: 20px; 
+	height: 20px; 
+	background: #27ae60; 
+	position: relative; 
+	z-index: 3; 
+  }
+  
+  .slider::-webkit-slider-thumb:after {
+	content: " "; 
+	width: 160px; 
+	height: 10px; 
+	position: absolute; 
+	z-index: 1; 
+	right: 20px; 
+	top: 5px; 
+	background: #2ecc71; 
+  }
+  .orange::-webkit-slider-thumb {
+	background: #d35400; 
+  }
+  
+  .orange::-webkit-slider-thumb:after {
+	background: #e67e22; 
+  }
+  .modal-content{
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
 	}
 }
