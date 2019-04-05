@@ -2,6 +2,7 @@
     session_start();
     include "mysql.php";
     $post_id=$_GET['post_id'];
+    $_SESSION['post']=$post_id;
     if (isset($_POST['comment_submit'])){
         if(!isset($_COOKIE['itutor_user'])){
             die('You have to log in to comment');
@@ -16,7 +17,25 @@
             
         }
     }
-    
+    if(isset($_POST['rating'])){
+        header("Location:index.php");
+        if(!isset($_COOKIE['itutor_user'])){
+            die('You have to log in to comment');
+            header("Location:single.php?post_id=$post_id");
+        }
+        else{
+            $u_id = $_COOKIE['itutor_user'];
+            $rating=$_POST['rating'];
+            $query="INSERT INTO ratings values($u_id,$post_id,$rating)";
+            mysqli_query($conn,$query);
+            $query="select rating,num_rating from post_init where post_id=$post_id";
+            $data=mysqli_fetch_assoc(mysqli_query($conn,$query));
+            $rating=($rating+$data['rating'])/($data['num_rating']+1);
+            $num = $data['num_rating']+1;
+            $query="update post_init set rating=$rating,num_rating=$num where post_id=$post_id";
+            mysqli_query($conn,$query);
+        }   
+    }
     $query = "update post_init set count_com = (select count(c_id) where post_id = $post_id) where post_id = $post_id";
     mysqli_query($conn,$query);
     $query = "select * from post_init where post_id=$post_id";
@@ -79,7 +98,7 @@
 													<?php echo $posts['count_com'] ; ?> Comments
 												</a>
                                         </li>
-                                        <li class="rating"  data-toggle="modal" data-target="#exampleModalCenter">
+                                        <li class="rating">
                                             <a href="#">
 													Rating
 													<ul> 
@@ -92,34 +111,6 @@
                                 </div>
                             </header>
                             <!-- /.end single blog header -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Rate this post</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form class="range-field">
-      <input class='slider orange' type="range"  max="5"/>
-      Drag the slider to give rating.
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 
                             <!-- start single blog entry content -->
@@ -212,7 +203,6 @@
         </div>
     </section>
     <!-- ./end single-blog section -->
-
 
 
 <?php

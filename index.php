@@ -62,7 +62,7 @@ include "mysql.php";
                             <?php echo $u_name ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="profile.php">Profile</a>
                     <?php if($is_ins){ ?> <a class="dropdown-item" href="admin/index.php">Admin</a> <?php } ?>
                                 <a class="dropdown-item" href="logout.php">Logout</a>
                             </div>
