@@ -76,7 +76,7 @@ if(isset($_POST['search'])){
                		<div class="pagination">
 			<ul>
 
-				<li>
+				<li><li>
 					<a href="#" >&laquo;</a>
 				</li>
 

@@ -39,6 +39,7 @@ body {
 
     #page-wrapper {
         padding: 10px;
+        padding-bottom:50px;
     }
 }
 
@@ -57,7 +58,7 @@ body {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #999;
+    color: #fff;
 }
 
 .top-nav>li>a:hover,
@@ -66,7 +67,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #000;
+    background-color: #248791;
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -251,4 +252,14 @@ ul.alert-dropdown {
 
 td{
     max-width:150px;
+}
+
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused),
+.ck .ck-content .ck-editor__editable .ck-rounded-corners .ck-editor__editable_inline .ck-focused{
+    height: 200px;
+}
+
+.admin_nav {
+    background: #248791;
+    border-bottom:0;
 }

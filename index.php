@@ -57,11 +57,11 @@ include "mysql.php";
                     else{
                         ?>
                         
-                        <div class="dropdown">
+                        <div class="dropdown logged_in">
                             <a class="btn btn-secondary dropdown-toggle  user_menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo $u_name ?>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-menu logged_in_dropdown" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="profile.php">Profile</a>
                     <?php if($is_ins){ ?> <a class="dropdown-item" href="admin/index.php">Admin</a> <?php } ?>
                                 <a class="dropdown-item" href="logout.php">Logout</a>
@@ -83,7 +83,9 @@ include "mysql.php";
                         <div class="search_in">
                             <input type="search" name='keyword' placeholder="What do you want to learn?">
                             <div class="search_submit">
-                                <input class="btn" name="search" type="submit" value="Search">
+                                <button class="btn search_btn" name="search" type="submit" >
+                                <i class="fas fa-search"></i>
+                                </button>
                             </div>
                         </div>
                         </form>

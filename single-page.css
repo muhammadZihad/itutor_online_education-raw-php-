@@ -534,3 +534,10 @@ li.rating ul i {
 	font-weight: 600;
 	color: #0062cc;
 }
+
+.input-btn {
+	background-color: #248791;
+	border: none;
+}
+
+.input-btn:hover {background-color: #0b5f67;}
