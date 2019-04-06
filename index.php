@@ -79,12 +79,14 @@ include "mysql.php";
                     <h2>Welcome <br> To The <span>itutor</span></h2>
                     <p>Learn from your instructor online</p>
                     <div class="slider_search">
+                        <form action="selected.php" method="post">
                         <div class="search_in">
-                            <input type="search" placeholder="What do you want to learn?">
+                            <input type="search" name='keyword' placeholder="What do you want to learn?">
                             <div class="search_submit">
-                                <i class="fas fa-search"></i>
+                                <input class="btn" name="search" type="submit" value="Search">
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -100,17 +102,18 @@ include "mysql.php";
                     <form action="">
                         <div class="col-auto">
                             <div class="single_op">
-                                <select class="custom-select">
+                                <select name="level" class="custom-select">
                                   <option selected>Select Your Level</option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
                                   <option value="3">Three</option>
+                                  <option value="4">Four</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="single_op">
-                                <select class="custom-select">
+                                <select name="term" class="custom-select">
                                   <option selected>Select Your Term</option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
@@ -120,23 +123,26 @@ include "mysql.php";
                         </div>
                         <div class="col-auto">
                             <div class="single_op">
-                                <select class="custom-select">
+                                <select name="sub" class="custom-select">
                                   <option selected>Select Your Subject</option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
                                   <option value="3">Three</option>
+                                  <option value="4">Four</option>
+                                  <option value="5">Five</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-auto">
                             <button class="btn sub_btn" type="submit">Go</button>
                         </div>
+                    </form>
                 </div>
-                </form>
+            </form>    
         </div>
     </div>
 
-    <!-- End  Semister Subject Input Area-->
+    <!-- End  Semester Subject Input Area-->
     <!-- Recent Uploads area-->
 
     <div class="container">

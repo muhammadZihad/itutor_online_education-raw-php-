@@ -135,7 +135,7 @@ a:hover {
 }
 
 .search_in {
-    width: 315px;
+    width: 380px;
     position: relative;
 }
 
@@ -143,7 +143,7 @@ a:hover {
     position: absolute;
     right: 0;
     top: 0px;
-    width: 49px;
+    width: 80px;
     height: 44px;
     background: #FFC722;
     text-align: center;

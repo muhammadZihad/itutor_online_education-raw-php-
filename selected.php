@@ -1,43 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'header.php';
+include 'mysql.php';
+if(isset($_POST['search'])){
+    $search = $_POST['keyword'];
+}
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css" integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,600i,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="single-page.css">
-    <title>Selected Category Post</title>
-</head>
 
-<body>
+?>
 
-    <!--    Header Top -->
-    <div class="sin_blog-top">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="sin_logo">
-                        <img src="img/logo-black.png" alt="">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="slider_search sin_page float-right">
-                        <div class="search_in">
-                            <input type="search" placeholder="What do you want to learn?">
-                            <div class="search_submit">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     
         <!-- Recent Uploads area-->
 
@@ -50,85 +19,52 @@
         <div class="row">
 
             <!--  single upload-->
-            <div class="col-md-3 col-sm-4">
-                <div class="single_recent_upld">
-                    <div class="prevw"></div>
-                    <div class="course_txt">
-                        <h5><a href="">Deep Learning: Hands on Artificial Technology</a></h5>
-                        <p><i class="fas fa-user"></i>S.M. Saleheen</p>
-                        <div class="rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i> <span class="rate_val">4.5 (1000)</span>
+            
+            <?php
+                $query="select post_init.post_id,post_init.title,post_init.rating,post_init.num_rating,users.name from post_init,users where LOWER(post_init.title) like '%$search%' and post_init.ins_id=users.id";
+                $data = mysqli_query($conn,$query);
+                
+                while($post=mysqli_fetch_assoc($data)){
+                ?>
+
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single_recent_upld">
+                            <div class="prevw"></div>
+                            <div class="course_txt">
+                                <h5><a href="<?php  echo "single.php?post_id=".$post['post_id'];   ?>"><?php  echo excerpt($post['title']);   ?></a></h5>
+                                <p><i class="fas fa-user"></i><?php  echo $post['name'];   ?></p>
+                                <div class="rate">
+                                    <i class="fas fa-star"></i> <span class="rate_val"><?php  echo $post['rating']."  (".$post['num_rating'].")";   ?></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--  single upload-->
-            <div class="col-md-3 col-sm-4">
-                <div class="single_recent_upld">
-                    <div class="prevw"></div>
-                    <div class="course_txt">
-                        <h5><a href="">Deep Learning: Hands on Artificial Technology</a></h5>
-                        <p><i class="fas fa-user"></i>S.M. Saleheen</p>
-                        <div class="rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i> <span class="rate_val">4.5 (1000)</span>
+
+                <?php
+                }
+
+                $query="select post_init.post_id,post_init.title,post_init.rating,post_init.num_rating,users.name from post_init,users where post_init.keyword like '%$search%' and post_init.ins_id=users.id";
+                $data = mysqli_query($conn,$query);
+                
+                while($post=mysqli_fetch_assoc($data)){
+                ?>
+
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single_recent_upld">
+                            <div class="prevw"></div>
+                            <div class="course_txt">
+                                <h5><a href="<?php  echo "single.php?post_id=".$post['post_id'];   ?>"><?php  echo excerpt($post['title']);   ?></a></h5>
+                                <p><i class="fas fa-user"></i><?php  echo $post['name'];   ?></p>
+                                <div class="rate">
+                                    <i class="fas fa-star"></i> <span class="rate_val"><?php  echo $post['rating']."  (".$post['num_rating'].")";   ?></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--  single upload-->
-            <div class="col-md-3 col-sm-4">
-                <div class="single_recent_upld">
-                    <div class="prevw"></div>
-                    <div class="course_txt">
-                        <h5><a href="">Deep Learning: Hands on Artificial Technology</a></h5>
-                        <p><i class="fas fa-user"></i>S.M. Saleheen</p>
-                        <div class="rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i> <span class="rate_val">4.5 (1000)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  single upload-->
-            <div class="col-md-3 col-sm-4">
-                <div class="single_recent_upld">
-                    <div class="prevw"></div>
-                    <div class="course_txt">
-                        <h5><a href="">Deep Learning: Hands on Artificial Technology</a></h5>
-                        <p><i class="fas fa-user"></i>S.M. Saleheen</p>
-                        <div class="rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i> <span class="rate_val">4.5 (1000)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  single upload-->
-            <div class="col-md-3 col-sm-4">
-                <div class="single_recent_upld">
-                    <div class="prevw"></div>
-                    <div class="course_txt">
-                        <h5><a href="">Deep Learning: Hands on Artificial Technology</a></h5>
-                        <p><i class="fas fa-user"></i>S.M. Saleheen</p>
-                        <div class="rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i> <span class="rate_val">4.5 (1000)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                <?php
+                }
+            ?>
 
         </div>
     </div>
@@ -264,3 +200,18 @@
 </body>
 
 </html>
+<?php 
+    function excerpt($title) {
+        $cutOffLength=30;
+        $charAtPosition = "";
+        $titleLength = strlen($title);
+    
+        do {
+            $cutOffLength++;
+            $charAtPosition = substr($title, $cutOffLength, 1);
+        } while ($cutOffLength < $titleLength && $charAtPosition != " ");
+    
+        return substr($title, 0, $cutOffLength) . '...';
+    
+    }
+?>
