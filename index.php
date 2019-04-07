@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "mysql.php";
     $u_name="";
         if(isset($_COOKIE['itutor_user'])){

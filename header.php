@@ -13,49 +13,36 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="single-page.css">
-    <title>Single Post</title>
+    <title><?php echo $title;?></title>
 </head>
 
 <body>
 <div class="nav_2">
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light cust_nav_bg">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="index.php"><img src="img/logo-black.png" style="width:75px;height:38px" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav cust_nav_a">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu nav_2_drop dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-    </ul>
+    
   </div>
   <div class="dropdown dropdwn_3">
+
+  <?php if(!isset($_SESSION['name']) || $_SESSION['name']=='') { ?>
+            <a class="login_a" href="login-sign-up.php"><i class="fas fa-sign-in-alt"></i> Login/Signup</a><?php 
+    }
+    else{
+    ?>
+
   <button class="btn dropdown-toggle" style="color:#fff" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   <i class="fas fa-user head_user"></i></i> Dropdown button
+   <i class="fas fa-user head_user"></i></i> <?php echo "$u_name";?>
   </button>
   <div class="dropdown-menu dropdwn_menu_3" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="#">Admin</a>
+    <a class="dropdown-item" href="logout.php">Logout</a>
   </div>
+    <?php } ?>
 </div>
 </nav>
 </div>

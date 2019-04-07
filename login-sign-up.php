@@ -1,6 +1,5 @@
 <?php
 	include 'mysql.php';
-	session_start();
 	if(isset($_SESSION['id']) && $_SESSION['id']!=0){
 		header("Location:index.php");
 	}
@@ -39,8 +38,10 @@
 				 $cookie_name = "itutor_user";
 				 $cookie_value = $data['id'];
 				 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-
-				 header("Location:index.php");
+				 
+				 if (isset($_SERVER["HTTP_REFERER"])) {
+					header("Location: " . $_SERVER["HTTP_REFERER"]);
+				}
 
 			}
 			else{
