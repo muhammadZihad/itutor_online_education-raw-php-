@@ -73,7 +73,11 @@
                     <li>
                         <a href="new_post.php"><i class="fa fa-fw fa-clipboard"></i> New Post</a>
                     </li>
-
+                    <?php if($_SESSION['id']==28){
+                        echo'<li>
+                        <a href="requests.php"><i class="fa fa-fw fa-clipboard"></i> Instructor Req</a>
+                    </li>';
+                    }?>
 
                 </ul>
             </div>

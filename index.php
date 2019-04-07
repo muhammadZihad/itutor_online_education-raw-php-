@@ -197,7 +197,8 @@ include "mysql.php";
                     <div class="col">
                         <h2>Become An Instructor</h2>
                         <p>Reach Thousands of Students</p>
-                        <button class="get_start_btn">Get Started</button>
+                        <a href="confirm.php" class="btn get_start_btn">Apply Now</a>
+                        <p>Apply request will be sent automatically</p>
                     </div>
                 </div>
             </div>

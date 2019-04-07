@@ -19,6 +19,7 @@
 				$qur = "insert into users(name,password,email,keyword) values ('$username','$password','$email','$keyword')";
 				mysqli_query($conn,$qur);
 				$query="insert into users_details (u_id) select id from users where keyword=$keyword";
+				mysqli_query($conn,$query);
 				completed();
 			}
 		}
