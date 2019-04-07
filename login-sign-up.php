@@ -18,6 +18,7 @@
 				$password = md5($password);
 				$qur = "insert into users(name,password,email,keyword) values ('$username','$password','$email','$keyword')";
 				mysqli_query($conn,$qur);
+				$query="insert into users_details (u_id) select id from users where keyword=$keyword";
 				completed();
 			}
 		}
@@ -82,7 +83,7 @@
 			  </div>';
 			}
 			?>
-			<input type="text" name="name" placeholder="Name" />
+			<input type="text" name="name" placeholder="Username" />
 			<input type="email" name="email" placeholder="Email" />
 			<input type="password" name="password" placeholder="Password" />
 			<input type="password" name="confirm_password" placeholder="Confirm Password" />

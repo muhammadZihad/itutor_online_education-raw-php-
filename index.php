@@ -43,7 +43,7 @@ include "mysql.php";
             <div class="row header">
                 <div class="col float-left">
                     <div class="logo">
-                        <img src="img/logo-01.png" alt="">
+                        <a href="index.php"><img src="img/logo-01.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col float-right my-auto">

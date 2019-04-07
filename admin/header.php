@@ -51,7 +51,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $u_name; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="../profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -64,27 +64,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
+                        <a href="../index.php"><i class="fa fa-fw fa-home"></i> Home</a>
+                    </li>
+                    <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+                    
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Posts<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="new_post.php">Add Post</a>
-                            </li>
-                        </ul>
+                        <a href="new_post.php"><i class="fa fa-fw fa-clipboard"></i> New Post</a>
                     </li>
 
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                   
-                    <li class="active">
-                        <a href="#"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
 
                 </ul>
             </div>

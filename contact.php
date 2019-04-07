@@ -27,18 +27,18 @@
                 <div class="form-box">
                     <h1>Get in Touch</h1>
                     <p>We are very social</p>
-                    <form action="" method="post">
+                    <form action="https://formspree.io/zihad.muhammadar@gmail.com"  method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input class="form-control" id="name" type="text" name="Name">
+                            <input class="form-control" id="name" type="text" name="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" name="Email">
+                            <input class="form-control" id="email" type="email" name="_replyto">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea class="form-control" id="message" name="Message"></textarea>
+                            <textarea class="form-control" id="message" name="message"></textarea>
                         </div>
                         <input class="btn btn-primary custom_btn_color" type="submit" value="Send" />
                 </div>

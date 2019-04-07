@@ -38,8 +38,10 @@
    <i class="fas fa-user head_user"></i></i> <?php echo "$u_name";?>
   </button>
   <div class="dropdown-menu dropdwn_menu_3" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Profile</a>
-    <a class="dropdown-item" href="#">Admin</a>
+    <a class="dropdown-item" href="profile.php">Profile</a>
+    <?php if($_SESSION['ins']){   ?>
+    <a class="dropdown-item" href="admin/index.php">Admin</a>
+    <?php  }?>
     <a class="dropdown-item" href="logout.php">Logout</a>
   </div>
     <?php } ?>

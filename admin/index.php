@@ -60,7 +60,7 @@ $result = mysqli_query($conn , $query);
                     <td><?php echo $pst['rating'] ; ?></td>
                     <td height="120"><img src="<?php echo '../'.$pst['image_name'] ; ?>" style="width:100%;height:100%;" alt="" /></td>
                     <td><a class="text-info" href="edit_post.php?post_id=<?php echo $pst['post_id'];?>">Edit</a></td>
-                    <td><a class="text-danger" href="#">Delete</a></td>
+                    <td><a class="text-danger" href="delete.php?post_id=<?php echo $pst['post_id'];?>">Delete</a></td>
                     </tr>
                     <tr>
 
