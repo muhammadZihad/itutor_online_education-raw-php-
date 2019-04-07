@@ -30,7 +30,7 @@ $page_title = "Add post";
             $file_final_destination = 'img/post_image/'.$file_new_name ;
             move_uploaded_file($file_tmp_name,$file_destination);
         }else{
-            echo "<script>alert('Error occured while uploading image');</script>";
+            $file_final_destination = 'img/post_image/default_post.jpg';
         }
         $link_status=0;
         $link=mysqli_real_escape_string($conn, $_POST['link']);
