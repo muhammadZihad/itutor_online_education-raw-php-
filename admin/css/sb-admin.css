@@ -238,6 +238,7 @@ ul.alert-dropdown {
 }
 .cats{
     width: 60%;
+    height:62px;
     display:flex;
 }
 .cat{
@@ -262,4 +263,7 @@ td{
 .admin_nav {
     background: #248791;
     border-bottom:0;
+}
+.sml{
+    margin-bottom: 18px;
 }

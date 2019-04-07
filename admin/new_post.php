@@ -41,12 +41,12 @@ include '../mysql.php';
 <?php include 'header.php'; 
 $page_title = "Add post";
     if(isset($_POST['submit'])){
-        $title = $_POST['title'];
+        $title = mysqli_real_escape_string($conn, $_POST['title']);
         $level = $_POST['level'];
         $term = $_POST['term'];
         $subject = $_POST['subject'];
         $content =mysqli_real_escape_string($conn, $_POST['content']);
-        $catagory= $level.$term.$subject;
+        $catagory= 'CSE'.$level.$term.$subject;
         $date = date('Y-m-d H:i:s');
         $img_name = 'default_post.jpg';
 
@@ -63,14 +63,21 @@ $page_title = "Add post";
 
         if($file_error===0){
             $file_new_name = $file_ext[0].uniqid('',true).".".$file_actual_ext ;
-            $file_destination = 'img/post_image/'.$file_new_name ;
+            $file_destination = '../img/post_image/'.$file_new_name ;
+            $file_final_destination = 'img/post_image/'.$file_new_name ;
             move_uploaded_file($file_tmp_name,$file_destination);
         }else{
             echo "<script>alert('Error occured while uploading image');</script>";
         }
-
-        $insert_query = "INSERT INTO post_init (title,catagory,ins_id,post_date,content,image_name) VALUES ('$title','$catagory',$u_id,'$date','$content','$file_destination')";
-        $rr = mysqli_query($conn,$insert_query);
+        $link_status=0;
+        $link=mysqli_real_escape_string($conn, $_POST['link']);
+        $keyword=mysqli_real_escape_string($conn, $_POST['keyword']);
+        if($link!=''){
+            $link_status=1;
+        }
+        $query = "INSERT INTO post_init (title,catagory,keyword,ins_id,post_date,content,image_name,video_status,video_link)";
+        $query.=" VALUES ('$title','$catagory','$keyword',$u_id,'$date','$content','$file_final_destination',$link_status,'$link')";
+        $rr = mysqli_query($conn,$query);
         mysqli_close($conn);
     }
 ?>
@@ -130,6 +137,15 @@ $page_title = "Add post";
                     <div class="form-group">
                         <label for="file">Select featured image</label>
                         <input type="file" name="file" class="form-control-file">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Video link from youtube</label>
+                        <input type="text" name="link" class="form-control title"   placeholder="Enter Link">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Keyword</label>
+                        <input type="text" name="keyword" class="form-control title"  placeholder="Enter Keyword">
+                        <small>Use ',' comma to separate keywords</small>
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
