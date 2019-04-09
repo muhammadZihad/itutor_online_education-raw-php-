@@ -22,7 +22,7 @@ include 'header.php';
 
         <div class="row heading_big">
             <div class="col">
-                <h2 class="big_h text-center">Searching for <span><?php echo $search;?></span></h2>
+                <h2 class="big_h text-center">Search Result for: <span><?php echo $search;?></span></h2>
             </div>
         </div>
         <div class="row">
@@ -32,8 +32,8 @@ include 'header.php';
             <?php
                 $query="select post_init.post_id,post_init.title,post_init.rating,post_init.num_rating,users.name from post_init,users where LOWER(post_init.title) like '%$search%' and post_init.ins_id=users.id";
                 $data = mysqli_query($conn,$query);
-                
-                while($post=mysqli_fetch_assoc($data)){
+                $count=0;
+                while($post=mysqli_fetch_assoc($data)){$count++;
                 ?>
 
                     <div class="col-md-3 col-sm-4">
@@ -55,7 +55,7 @@ include 'header.php';
                 $query="select post_init.post_id,post_init.title,post_init.rating,post_init.num_rating,users.name from post_init,users where post_init.keyword like '%$search%' and post_init.ins_id=users.id";
                 $data = mysqli_query($conn,$query);
                 
-                while($post=mysqli_fetch_assoc($data)){
+                while($post=mysqli_fetch_assoc($data)){$count++;
                 ?>
 
                     <div class="col-md-3 col-sm-4">
@@ -72,6 +72,29 @@ include 'header.php';
                     </div>
 
                 <?php
+                }
+                if($count===0){
+                    echo '
+                    <div class="col">
+                    <h4 style="text-align:center">No result found</h4>
+
+                    <div class="slider_search justify-content">
+                    <form action="selected.php" method="post">
+                    <div class="search_in srch_2">
+                        <input class="inpt_2" type="search" name="keyword" placeholder="What do you want to learn?">
+                        <div class="search_submit srch">
+                            <button class="btn search_btn" name="search" type="submit" >
+                                <div class="si_2">
+                                 <i class="fas fa-search"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                    </div>
+'
+                    ;
                 }
             ?>
 
@@ -177,3 +200,16 @@ include 'header.php';
     
     }
 ?>
+
+<style>
+.search_in.srch_2{
+    margin: 0 auto;
+}
+.inpt_2{
+    border: 1px solid #ededed !important;
+}
+.si_2 {
+    height: 30px;
+    line-height: 30px;
+}
+</style>

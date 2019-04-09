@@ -75,7 +75,7 @@
                     </li>
                     <?php if($_SESSION['id']==28){
                         echo'<li>
-                        <a href="requests.php"><i class="fa fa-fw fa-clipboard"></i> Instructor Req</a>
+                        <a href="requests.php"><i class="fa fa-fw fa fa-envelope"></i> Instructor Req</a>
                     </li>';
                     }?>
 

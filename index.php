@@ -198,7 +198,7 @@ include "mysql.php";
                         <h2>Become An Instructor</h2>
                         <p>Reach Thousands of Students</p>
                         <a href="confirm.php" class="btn get_start_btn">Apply Now</a>
-                        <p>Apply request will be sent automatically</p>
+                        <p> <small>Apply request will be sent automatically</small></p>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@ include "mysql.php";
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="footer_copyright_txt">&copy; Saleheen & Zihad</div>
+                    <div class="footer_copyright_txt">&copy; Saleheen, Zihad & Arafat</div>
                 </div>
             </div>
         </div>

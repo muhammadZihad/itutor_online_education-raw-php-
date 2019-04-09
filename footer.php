@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="footer_copyright_txt">&copy; Saleheen & Zihad</div>
+                    <div class="footer_copyright_txt">&copy; Saleheen,Zihad & Arafat</div>
                 </div>
             </div>
         </div>

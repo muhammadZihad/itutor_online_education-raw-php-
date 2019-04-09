@@ -322,12 +322,12 @@ h2.big_h > span {
     font-size: 18px;
 }
 .get_start_btn {
-    height:50px;
+    height:44px;
     background: #248791;
     border: none;
     color: #fff;
     font-weight: 600;
-    padding: 9px 16px;
+    padding: 9px 14px;
     margin-bottom: 10px;
 }
 
